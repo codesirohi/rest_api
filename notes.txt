@@ -3,3 +3,12 @@ GET /api/customers/1
 PUT /api/customers/1
 DELETE /api/customers/1
 POST /api/customers 
+
+
+replace single quote with the ( ` ) so we can use template string
+
+( ' ' ) replace with the ( ` ` ) 
+
+localhost:3000/node/posts/2018/1/?sortBy=name
+
+sortBy=name (query string parameter)
