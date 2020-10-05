@@ -1,13 +1,15 @@
+const { response } = require('express');
 const express = require('express');
 const app = express();
 
+app.use(express.json());
 
-const trial_array = [
+const trial = [
 
     { id : 1, name: 'maths'},
     { id : 2, name: 'scince'},
     { id : 3, name: 'Physics'},
-    { id : 4, name: 'Chemistry'},
+    { id : 4, name: 'Chemistry'}
 ];
 
 app.get('/',(req, res) =>{
@@ -16,16 +18,31 @@ app.get('/',(req, res) =>{
 
 });
 
-app.get('/node/trial_array',(req, res) => {
+app.get('/node/trial',(req, res) => {
 
-    //res.send([1,2,3,4,5])
-    res.send(req.params.id) 
+    res.send(trial) 
 
+});
+
+app.post('/node/trial',(req, res) =>{
+
+    const tt = {
+        id: trial.length +1,
+        name: req.body.name
+    }
+    trial.push(tt);
+    res.send(tt);
 })
 
-app.get('/node/trial_array/:id',(req, res) => {
 
-    res.send(req.params) 
+
+app.get('/node/trial/:id',(req, res) => {
+
+ 
+    const tt =trial.find(c => c.id === parseInt(req.params.id))
+    if(!tt) res.status(404).send(" not found")
+    res.send(tt) 
+    
 
 })
 

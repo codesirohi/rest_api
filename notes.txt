@@ -12,3 +12,8 @@ replace single quote with the ( ` ) so we can use template string
 localhost:3000/node/posts/2018/1/?sortBy=name
 
 sortBy=name (query string parameter)
+
+if client ask for a response ut that does not exist ont he server return 
+404 code
+
+  
