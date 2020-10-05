@@ -1,4 +1,4 @@
-const { response } = require('express');
+const joi =require('joi');
 const express = require('express');
 const app = express();
 
@@ -26,6 +26,19 @@ app.get('/node/trial',(req, res) => {
 
 app.post('/node/trial',(req, res) =>{
 
+    const schema = {
+        name: joi.string().min(3).max(10).required()
+    };
+
+    const result = joi.validate(req.body, schema);
+    
+
+   
+    if(result.error) {
+//        //400 bad Request
+        res.status(400).send(result.error.body)
+        return;
+    }
     const tt = {
         id: trial.length +1,
         name: req.body.name
