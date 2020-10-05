@@ -36,7 +36,7 @@ app.post('/node/trial',(req, res) =>{
    
     if(result.error) {
 //        //400 bad Request
-        res.status(400).send(result.error.body)
+        res.status(400).send(result.error)
         return;
     }
     const tt = {
